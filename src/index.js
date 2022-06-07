@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import GlobalStyle from './styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import Router from './Router';
@@ -13,6 +13,5 @@ root.render(
     <ThemeProvider theme={theme}>
       <Router />
     </ThemeProvider>
-  </>,
-  document.getElementById('root')
+  </>
 );
