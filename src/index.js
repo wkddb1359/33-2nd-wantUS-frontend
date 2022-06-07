@@ -5,7 +5,9 @@ import { ThemeProvider } from 'styled-components';
 import Router from './Router';
 import theme from './styles/theme';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
