@@ -4,10 +4,12 @@ import Login from './pages/login/Login';
 import JobList from './pages/joblist/JobList';
 import JobDetail from './pages/jobdetail/JobDetail';
 import Resume from './pages/resume/Resume';
+import Nav from './components/nav/Nav';
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
