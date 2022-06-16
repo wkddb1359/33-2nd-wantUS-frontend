@@ -1,3 +1,3 @@
-const Signup = () => {};
+const Mypage = () => {};
 
-export default Signup;
+export default Mypage;
