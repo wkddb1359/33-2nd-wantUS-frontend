@@ -6,6 +6,7 @@ import JobList from './pages/joblist/JobList';
 import JobDetail from './pages/jobdetail/JobDetail';
 import LikePage from './pages/likePage/LikePage';
 import Resume from './pages/resume/Resume';
+import Mypage from './pages/mypage/Mypage';
 import Nav from './components/nav/Nav';
 import Footer from './components/footer/Footer';
 import NaverCallback from './pages/login/NaverCallback';
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/joblist" element={<JobList />} />
         <Route path="/jobdetail/:company_id" element={<JobDetail />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/NaverCallback" element={<NaverCallback />} />
         <Route path="/KakaoCallback" element={<KakaoCallback />} />
         <Route path="/GoogleCallback" element={<GoogleCallback />} />
