@@ -21,7 +21,7 @@ const SearchModal = ({ isShownSearchBar, setIsShownSearchBar }) => {
     if (inputText.trim().length === 0) {
       return;
     } else {
-      navigate(`/search?query=${inputText}`);
+      navigate(`/search?${inputText}`);
       setSearchLog(prevState => {
         return [{ id: logId, text: inputText }, ...prevState];
       });
@@ -76,7 +76,7 @@ const SearchModal = ({ isShownSearchBar, setIsShownSearchBar }) => {
               {searchLog.map(item => {
                 return (
                   <SearchLogItem key={item.id}>
-                    <StyledLink to={`/search?query=${item.text}`}>
+                    <StyledLink to={`/search?${item.text}`}>
                       {item.text}
                     </StyledLink>
                     <DeleteItemBtn

@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import useFetch from '../hooks/useFetch';
+import useFetch from '../../../hooks/useFetch';
 
 const Search = () => {
   const [itemList, setItemList] = useState([]);
-  // TODO: 테스트 이후 아래 state 초기값 재설정
+
   const [isValidKeyword, setIsValidKeyword] = useState(false);
 
   const { httpRequest } = useFetch();
 
   const navigation = useNavigate();
-  // TODO: 백엔드 엔드포인트 요청시 아래 변수 활용
   const location = useLocation();
+
+  const url_search = `http://10.58.2.54:8000/jobs/private?search=${location.search.slice(
+    1
+  )}`;
+  const url_likeData = id => {
+    return `http://10.58.2.54:8000/jobs/${id}/follow`;
+  };
 
   const goToDetail = id => {
     navigation(`/jobdetail/${id}`);
@@ -23,33 +29,34 @@ const Search = () => {
       return [
         ...prevState.map(item => {
           if (item.id === id) {
-            return { ...item, like: true };
+            return { ...item, like: !item.like };
           } else {
             return item;
           }
         }),
       ];
     });
+
+    httpRequest({
+      url: url_likeData(id),
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
   };
-
-  // 좋아요 리스트 송부를 위한 기능
-  // const likeItemList = itemList.filter(item => {
-  //   return item.like;
-  // });
-
-  // console.log(likeItemList);
 
   const listHandler = data => {
     setItemList([
       ...data.map(item => {
         return {
           id: item.id,
-          name: item.author,
-          category: '프론트엔드 개발자',
-          location: '서울',
-          years: 2,
-          like: false,
-          url: item.download_url,
+          jobName: item.name,
+          company: item.company,
+          location: item.location,
+          years: item.years,
+          like: item.follow,
+          url: item.url,
         };
       }),
     ]);
@@ -58,12 +65,14 @@ const Search = () => {
   useEffect(() => {
     httpRequest(
       {
-        // TODO: 아래 URL은 임시 URL로 서버 통신 이후 수정 할 것
-        url: `https://picsum.photos/v2/list?page=1&limit=3`,
+        url: url_search,
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
       },
       listHandler
     );
-  }, [httpRequest]);
+  }, [httpRequest, location, url_search]);
 
   useEffect(() => {
     if (itemList.length === 0) {
@@ -76,7 +85,7 @@ const Search = () => {
   return (
     <SearchResult>
       <SearchResultTitle>
-        {decodeURI(location.search.split('=')[1])}
+        {`검색어 : ${decodeURI(location.search.slice(1))}`}
       </SearchResultTitle>
       <SearchResultSection>
         {!isValidKeyword && (
@@ -99,14 +108,15 @@ const Search = () => {
                     <LogoImg src={item.url} />
                   </ImgContainer>
                   <TextContainer>
-                    <CompanyName>{item.name}</CompanyName>
-                    <CompanyCategory>IT, 개발</CompanyCategory>
+                    <CompanyName>{item.jobName}</CompanyName>
+                    <CompanyCategory>{item.company}</CompanyCategory>
                   </TextContainer>
                   <LikeButton
                     onClick={event => {
                       event.stopPropagation();
                       likeHandler(item.id);
                     }}
+                    like={item.like}
                   >
                     좋아요
                   </LikeButton>
@@ -124,6 +134,7 @@ const SearchResult = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 `;
 
 const SearchResultTitle = styled.h1`
@@ -188,7 +199,6 @@ const ImgContainer = styled.div`
   overflow: hidden;
 `;
 
-//TODO : 이미지 url 확정 시 스타일 지정할 것
 const LogoImg = styled.img`
   height: 60px;
 `;
@@ -217,7 +227,8 @@ const LikeButton = styled.button`
   border: 1px solid ${({ theme }) => theme.borderColor};
   border-radius: 20px;
   background-color: transparent;
-  color: ${({ theme }) => theme.primaryBlue};
+  color: ${({ theme, like }) => (like ? 'red' : theme.primaryBlue)};
+
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
@@ -228,3 +239,6 @@ const LikeButton = styled.button`
 `;
 
 export default Search;
+
+const TOKEN =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTd9.ZLfjk6sHhjvX3_D5KJb-l5QlKECQXOpI874ozA2WHT4';

@@ -9,7 +9,7 @@ const MidNavBar = () => {
     navigate('/joblist');
   };
   const goToMyProfile = () => {
-    navigate('/');
+    navigate('/mypage');
   };
   return (
     <Bar>
