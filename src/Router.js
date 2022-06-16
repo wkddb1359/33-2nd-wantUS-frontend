@@ -12,6 +12,7 @@ import Footer from './components/footer/Footer';
 import NaverCallback from './pages/login/NaverCallback';
 import KakaoCallback from './pages/login/KakaoCallback';
 import GoogleCallback from './pages/login/GoogleCallback';
+import Search from './components/nav/components/Search';
 
 const Router = () => {
   return (
@@ -29,6 +30,7 @@ const Router = () => {
         <Route path="/NaverCallback" element={<NaverCallback />} />
         <Route path="/KakaoCallback" element={<KakaoCallback />} />
         <Route path="/GoogleCallback" element={<GoogleCallback />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </BrowserRouter>
