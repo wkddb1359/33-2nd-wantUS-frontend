@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoIosSearch } from 'react-icons/io';
 import DropMenu from './DropMenu.js';
+import SearchModal from './components/SearchModal.js';
 import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const [dropMenu, setDropMenu] = useState(false);
   const navigate = useNavigate();
   const modalEl = useRef();
+  const [isShownSearchBar, setIsShownSearchBar] = useState(false);
 
   //로그인 토큰 받으면 텍스트 변경 준비
   const [isLogin, setIsLogin] = useState(false);
@@ -23,7 +25,7 @@ const Nav = () => {
   };
 
   const goToMain = () => {
-    navigate('/main');
+    navigate('/');
   };
 
   const checkLogin = () => {
@@ -64,7 +66,11 @@ const Nav = () => {
           </MenuListContainer>
           <NavRightContainer>
             <UserSection>
-              <SearchIcon />
+              <SearchIcon
+                onClick={() => {
+                  setIsShownSearchBar(true);
+                }}
+              />
               <Login onClick={checkLogin}>
                 {isLogin ? '로그아웃' : '회원가입/로그인'}
               </Login>
@@ -72,6 +78,12 @@ const Nav = () => {
             <CompanyService>기업 서비스</CompanyService>
           </NavRightContainer>
         </NavContainer>
+        {isShownSearchBar && (
+          <SearchModal
+            isShownSearchBar={isShownSearchBar}
+            setIsShownSearchBar={setIsShownSearchBar}
+          />
+        )}
       </NavWrapper>
       {dropMenu && <DropMenu />}
     </>
@@ -86,6 +98,7 @@ const NavWrapper = styled.div`
   width: 100%;
   border-bottom: 1px solid #e1e2e3;
   background-color: white;
+  z-index: 1000;
 `;
 
 const NavContainer = styled.div`

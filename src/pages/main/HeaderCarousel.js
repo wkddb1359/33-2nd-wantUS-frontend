@@ -41,7 +41,6 @@ const Img = styled.img`
   border: 1px solid #ddd;
   border-radius: 5px;
   object-fit: cover;
-  position: relative;
 `;
 
 export default HeaderCarousel;

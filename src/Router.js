@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Main from './pages/main/Main';
-import Signup from './pages/signup/Signup';
+import Login from './pages/login/Login';
 import JobList from './pages/joblist/JobList';
 import JobDetail from './pages/jobdetail/JobDetail';
 import LikePage from './pages/likePage/LikePage';
@@ -17,9 +17,10 @@ const Router = () => {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/likePage" element={<LikePage />} />
+        <Route path="/*" element={<Navigate to="/" />} />
         <Route path="/" element={<Main />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/likePage" element={<LikePage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/joblist" element={<JobList />} />
         <Route path="/jobdetail/:id" element={<JobDetail />} />
         <Route path="/resume" element={<Resume />} />
