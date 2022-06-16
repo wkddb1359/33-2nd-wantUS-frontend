@@ -23,7 +23,7 @@ const JobItem = ({ item, onChangeList, token }) => {
       url: url_likeData,
       method: 'POST',
       headers: {
-        Authorization: TOKEN,
+        Authorization: localStorage.getItem('token'),
       },
     });
   };

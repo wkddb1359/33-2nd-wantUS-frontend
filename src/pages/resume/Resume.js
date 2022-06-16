@@ -9,24 +9,11 @@ const Resume = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [oneChange, setOneChange] = useState(true);
 
-  const handleChangeFile = e => {
-    const formData = new FormData();
-    formData.append('resume', e.target.files[0]);
-
-    fetch('http://10.58.2.136:8000/resumes/upload', {
-      method: 'POST',
-      // headers: { Authorization: localStorage.getItem('token',token) },
-      body: formData,
-    })
-      .then(res => res.json())
-      .then(data => data);
-  };
-
-  // {
-  //   haeders: { Authorization: localStorage.setItem('token', token) },
-  // }
   useEffect(() => {
-    fetch('http://10.58.2.136:8000/resumes/list ')
+    fetch('http://10.58.2.54:8000/resumes/list', {
+      method: 'GET',
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(data => {
         setUserFile(data.result);
@@ -34,10 +21,35 @@ const Resume = () => {
       });
   }, [oneChange]);
 
-  useEffect(() => {
-    fetch('/data/resumeuserdata.json')
+  const handleChangeFile = e => {
+    const formData = new FormData();
+    formData.append('resume', e.target.files[0]);
+
+    fetch('http://10.58.2.54:8000/resumes/upload', {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('token') },
+      body: formData,
+    }).then(res => res.json());
+
+    userFile.splice(0, userFile.length);
+
+    fetch('http://10.58.2.54:8000/resumes/list', {
+      method: 'GET',
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
-      .then(data => setUserInfo(data));
+      .then(data => {
+        setUserFile(data.result);
+      });
+  };
+
+  useEffect(() => {
+    fetch('http://10.58.2.54:8000/resumes/list', {
+      method: 'GET',
+      headers: { Authorization: localStorage.getItem('token') },
+    })
+      .then(res => res.json())
+      .then(data => setUserInfo(data.result));
   }, []);
 
   return (
@@ -106,7 +118,7 @@ const ResumeContainer = styled.div`
 const ResumeListHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 25px 0 0 5px;
+  margin: 50px 0 0 5px;
   padding: 15px 0;
   font-weight: bold;
   line-height: 1.5;

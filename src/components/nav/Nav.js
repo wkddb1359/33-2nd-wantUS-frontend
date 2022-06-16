@@ -2,19 +2,19 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoIosSearch } from 'react-icons/io';
-import DropMenu from './DropMenu.js';
 import SearchModal from './components/SearchModal.js';
+import DropMenu from './DropMenu.js';
 import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const [dropMenu, setDropMenu] = useState(false);
+  const [isShownSearchBar, setIsShownSearchBar] = useState(false);
   const navigate = useNavigate();
   const modalEl = useRef();
-  const [isShownSearchBar, setIsShownSearchBar] = useState(false);
 
   //로그인 토큰 받으면 텍스트 변경 준비
   const [isLogin, setIsLogin] = useState(false);
-  const wantToken = localStorage.getItem('want_token');
+  const wantToken = localStorage.getItem('token');
 
   useEffect(() => {
     wantToken && setIsLogin(true);
@@ -28,8 +28,27 @@ const Nav = () => {
     navigate('/');
   };
 
+  const goToMypage = () => {
+    navigate('/mypage');
+  };
+
+  const goToLikepage = () => {
+    navigate('/likepage');
+  };
+
+  const goToResume = () => {
+    navigate('/resume');
+  };
+
   const checkLogin = () => {
     navigate('login');
+  };
+
+  const checkLogOut = () => {
+    localStorage.removeItem('token');
+    setIsLogin(false);
+    alert('로그아웃 되었습니다!');
+    navigate('/');
   };
 
   const closeDropMenu = useCallback(
@@ -49,6 +68,15 @@ const Nav = () => {
     };
   }, [closeDropMenu, dropMenu]);
 
+  const GLOBAL_NAV = [
+    { id: 1, content: '채용' },
+    { id: 2, content: '이벤트' },
+    { id: 3, content: '직군별 연봉' },
+    { id: 4, content: '이력서', functional: goToResume },
+    { id: 5, content: '커뮤니티' },
+    { id: 6, content: '프리랜서' },
+  ];
+
   return (
     <>
       <NavWrapper>
@@ -60,8 +88,12 @@ const Nav = () => {
             <Title onClick={goToMain}>wantUS</Title>
           </Mainbar>
           <MenuListContainer>
-            {GLOBAL_NAV.map(({ content, id }) => {
-              return <MenuList key={id}>{content}</MenuList>;
+            {GLOBAL_NAV.map(({ content, id, functional }) => {
+              return (
+                <MenuList key={id} onClick={functional}>
+                  {content}
+                </MenuList>
+              );
             })}
           </MenuListContainer>
           <NavRightContainer>
@@ -71,11 +103,15 @@ const Nav = () => {
                   setIsShownSearchBar(true);
                 }}
               />
-              <Login onClick={checkLogin}>
-                {isLogin ? '로그아웃' : '회원가입/로그인'}
-              </Login>
+              {!isLogin && <Login onClick={checkLogin}>로그인</Login>}
+              {isLogin && <Login onClick={checkLogOut}>로그아웃</Login>}
             </UserSection>
-            <CompanyService>기업 서비스</CompanyService>
+            <CompanyService onClick={goToMypage}>
+              {isLogin ? '마이 페이지' : '기업 서비스'}
+            </CompanyService>
+            {isLogin && (
+              <CompanyService onClick={goToLikepage}>Follow</CompanyService>
+            )}
           </NavRightContainer>
         </NavContainer>
         {isShownSearchBar && (
@@ -98,7 +134,7 @@ const NavWrapper = styled.div`
   width: 100%;
   border-bottom: 1px solid #e1e2e3;
   background-color: white;
-  z-index: 1000;
+  z-index: 9999;
 `;
 
 const NavContainer = styled.div`
@@ -181,14 +217,5 @@ const CompanyService = styled.div`
   margin-top: 4px;
   margin-left: 20px;
   color: #666;
+  cursor: pointer;
 `;
-
-const GLOBAL_NAV = [
-  { id: 1, content: '채용' },
-  { id: 2, content: '이벤트' },
-  { id: 3, content: '직군별 연봉' },
-  { id: 4, content: '이력서' },
-  { id: 5, content: '커뮤니티' },
-  { id: 6, content: '프리랜서' },
-  { id: 7, content: 'AI 합격예측' },
-];

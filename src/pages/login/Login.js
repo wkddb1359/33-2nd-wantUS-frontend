@@ -15,6 +15,7 @@ const Login = () => {
   const NaverAuthURL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENTID}&redirect_uri=${process.env.REACT_APP_CALLBACKURL}&state=${process.env.REACT_APP_STATE}`;
   const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=code&scope=${process.env.REACT_APP_GOOGLE_SCOPE}`;
 
+  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
   const handleKakaoLogin = () => {
     window.location.href = KakaoAuthURL;
   };

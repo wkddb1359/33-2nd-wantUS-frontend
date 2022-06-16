@@ -4,8 +4,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useState } from 'react';
 import FileSaver from 'file-saver';
 
-const ResumeItemList = ({ resumeData, userInfo }) => {
-  const { name, date } = userInfo.user;
+const ResumeItemList = ({ resumeData, setUserFile }) => {
   const [modal, setModal] = useState(false);
   const modalEl = useRef();
   const [deleteReviewUpdate, setDeleteReviewUpdate] = useState(false);
@@ -40,8 +39,10 @@ const ResumeItemList = ({ resumeData, userInfo }) => {
   };
 
   const fileDelete = e => {
-    fetch(`http://10.58.2.136:8000/resumes/list/${resumeData.id}`, {
+    e.preventDefault();
+    fetch(`http://10.58.2.54:8000/resumes/list/${resumeData.id}`, {
       method: 'DELETE',
+      headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => {
         if (res.ok) {
@@ -51,15 +52,24 @@ const ResumeItemList = ({ resumeData, userInfo }) => {
       .then(data => {
         if (data) {
           setDeleteReviewUpdate(!deleteReviewUpdate);
+          alert('삭제가 완료되었습니다.');
         }
+      });
+    fetch('http://10.58.2.54:8000/resumes/list', {
+      method: 'GET',
+      headers: { Authorization: localStorage.getItem('token') },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setUserFile(data.result);
       });
   };
 
   return (
     <ResumeItem>
       <ResumeItemText>
-        <ResumeItemTitle>{name}</ResumeItemTitle>
-        <ResumeItemTime>{date}</ResumeItemTime>
+        <ResumeItemTitle>{resumeData.user}</ResumeItemTitle>
+        <ResumeItemTime>2022.06.16</ResumeItemTime>
         <FileName>{resumeData.name}</FileName>
       </ResumeItemText>
       <ResumeItemInfo onClick={showModal} ref={modalEl}>
@@ -153,7 +163,7 @@ const ModalForm = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  top: 20px;
+  top: 29px;
   right: -80px;
   min-width: 160px;
   padding: 5px 0;

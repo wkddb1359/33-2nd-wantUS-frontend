@@ -49,8 +49,8 @@ const DropMenuStyle = css`
 const DropMenuContainer = styled.div``;
 
 const FirstDrop = styled.div`
-  left: 13.5%;
-  top: 6.5%;
+  left: 22%;
+  top: 5.5%;
   ${DropMenuStyle}
   z-index: 1000;
   border: 1px solid #ddd;
