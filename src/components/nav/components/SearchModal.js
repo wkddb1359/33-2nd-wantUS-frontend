@@ -8,6 +8,9 @@ const SearchModal = () => {
   const [searchLog, setSearchLog] = useState([]);
   const [logId, setLogId] = useState(0);
   const [isShownSearchBar, setIsShownSearchBar] = useState(false);
+  const [searchLog, setSearchLog] = useState([]);
+  const [logId, setLogId] = useState(0);
+  const [isShownSearchBar, setIsShownSearchBar] = useState(true);
 
   const navigate = useNavigate();
 

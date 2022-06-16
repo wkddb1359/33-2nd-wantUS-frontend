@@ -5,6 +5,7 @@ import useFetch from '../../../hooks/useFetch';
 
 const Search = () => {
   const [itemList, setItemList] = useState([]);
+
   const [isValidKeyword, setIsValidKeyword] = useState(false);
 
   const { httpRequest } = useFetch();
@@ -72,6 +73,11 @@ const Search = () => {
       listHandler
     );
   }, [httpRequest, location, url_search]);
+        url: `https://picsum.photos/v2/list?page=1&limit=3`,
+      },
+      listHandler
+    );
+  }, [httpRequest]);
 
   useEffect(() => {
     if (itemList.length === 0) {
@@ -226,6 +232,7 @@ const LikeButton = styled.button`
   border-radius: 20px;
   background-color: transparent;
   color: ${({ theme, like }) => (like ? 'red' : theme.primaryBlue)};
+
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
