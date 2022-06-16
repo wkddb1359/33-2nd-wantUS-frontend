@@ -6,6 +6,7 @@ import JobDetail from './pages/jobdetail/JobDetail';
 import LikePage from './pages/likePage/LikePage';
 import Resume from './pages/resume/Resume';
 import Nav from './components/nav/Nav';
+import Footer from './components/footer/Footer';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/jobdetail/:company_id" element={<JobDetail />} />
         <Route path="/resume" element={<Resume />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
