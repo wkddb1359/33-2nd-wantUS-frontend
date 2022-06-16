@@ -3,13 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 
-const SearchModal = () => {
+const SearchModal = ({ isShownSearchBar, setIsShownSearchBar }) => {
   const [inputText, setInputText] = useState('');
-  //TODO: 검색 기록을 서버에 저장 할 수 있는지 확인
   const [searchLog, setSearchLog] = useState([]);
   const [logId, setLogId] = useState(0);
-  //TODO: 네비게이션바 완성 시 아래 초기값 false로 수정
-  const [isShownSearchBar, setIsShownSearchBar] = useState(true);
 
   const navigate = useNavigate();
 

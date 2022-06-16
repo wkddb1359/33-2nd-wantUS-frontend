@@ -49,16 +49,22 @@ const DropMenuStyle = css`
 const DropMenuContainer = styled.div``;
 
 const FirstDrop = styled.div`
-  left: 22.5%;
-  top: 5.2%;
+  left: 13.5%;
+  top: 6.5%;
   ${DropMenuStyle}
+  z-index: 1000;
+  border: 1px solid #ddd;
+  border-top: none;
 `;
 
 const DropList = styled.div`
   padding-top: 10px;
+  padding-left: 10px;
   padding-bottom: 10px;
+
   font-size: 14px;
   font-weight: bold;
+
   cursor: pointer;
 
   &:hover {
@@ -71,7 +77,7 @@ const DevelopeMenu = styled.div`
   ${DropMenuStyle}
   left: 100%;
   top: 0%;
-  width: 70%;
+  width: 100%;
   color: black;
 `;
 
