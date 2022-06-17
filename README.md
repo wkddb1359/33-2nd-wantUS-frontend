@@ -27,7 +27,18 @@
 
 ### 김정준 : 로그인/회원가입, 메인페이지
 
+![wantUS_메인페이지](https://user-images.githubusercontent.com/102506443/174235557-916f2855-1c81-4cbd-b1a0-145ef5b8a9d6.gif)
+- 메인페이지
+  - 캐러셀 라이브러리 활용
+  - 
+![wantUS_카카오_로그인](https://user-images.githubusercontent.com/102506443/174235975-742892cb-f413-4a54-9cb3-ed8a60ae0ad2.gif)
+- 소셜로그인
+  - 카카오, 네이버, 구글 API를 이용하여 로그인 구현
+  - 인가코드를 발급하기 위한 API_KEY 보안을 위해서 .env 파일을 생성하고 `.gitignore`에 등록
+
 ### 김현주 : 채용공고리스트, 검색바/검색결과페이지
+
+
 
 
 ![infinite scroll](https://user-images.githubusercontent.com/101119985/174231973-78152b27-9222-4f5f-89b0-f6d7a3bf8e13.gif)
