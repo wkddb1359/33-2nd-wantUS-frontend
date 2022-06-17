@@ -61,7 +61,6 @@
   - useParams를 이용하여 각 페이지에 맞는 데이터 받아와서 보여주기
   - 네이버 API를 이용해 각 기업의 위치를 지도로 표시
 
-<br/>
 ![ezgif com-gif-maker (9)](https://user-images.githubusercontent.com/96937488/174236090-e65ed8fe-1476-40a0-bc50-8f8d6edb2dd9.gif)
 
 - 이력서 파일 업로드
