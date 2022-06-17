@@ -27,18 +27,7 @@
 
 ### 김정준 : 로그인/회원가입, 메인페이지
 
-![wantUS_메인페이지](https://user-images.githubusercontent.com/102506443/174235557-916f2855-1c81-4cbd-b1a0-145ef5b8a9d6.gif)
-- 메인페이지
-  - 캐러셀 라이브러리 활용
-  
-![wantUS_카카오_로그인](https://user-images.githubusercontent.com/102506443/174235975-742892cb-f413-4a54-9cb3-ed8a60ae0ad2.gif)
-- 소셜로그인
-  - 카카오, 네이버, 구글 API를 이용하여 로그인 구현
-  - 인가코드를 발급하기 위한 API_KEY 보안을 위해서 .env 파일을 생성하고 `.gitignore`에 등록
-
 ### 김현주 : 채용공고리스트, 검색바/검색결과페이지
-
-
 
 
 ![infinite scroll](https://user-images.githubusercontent.com/101119985/174231973-78152b27-9222-4f5f-89b0-f6d7a3bf8e13.gif)
@@ -59,5 +48,44 @@
   - 각 아이템 클릭 시 채용상세페이지로 이동 
 
 ### 안성주 : Nav/Footer, 마이페이지, 이력서페이지
+
+
+![Nav_텍스트_변경_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237175-e84cd00e-5024-4108-814a-38141cd8a989.gif)
+![Nav_dropmenu_구현_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237425-641d81c2-4847-4477-a107-122ea02dec51.gif)
+
+
+
+
+- Nav/Footer 
+  - Navbar 메뉴별로 클릭 시 해당 페이지로 이동
+  - 햄버거bar 모달창 및 2중 모달창 구현
+  - 비로그인 및 로그인시 각각 토근값을 기준으로 Navbar 구성 메뉴 변경
+
+
+![Mypage_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237637-6832469b-c6ec-49b8-a971-94e3353e6db3.gif)
+
+
+
+
+- 마이페이지
+  - 백앤드로부터 사용자 정보 및 사용자 지원 회사정보를 받아 페이지로 표출
+  - 고정적으로 사용되는 데이터와 지속적으로 변경되는 데이터를 구분하여 페이지 구현
+  - 지원 현황 정보 수치를 지원 요약 정보 표현 
+ 
+ ![이력서1_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237800-95889354-b8e0-4a68-b2ec-8a90137643fb.gif)
+
+ ![이력서_삭제_AdobeExpress](https://user-images.githubusercontent.com/97432901/174238009-4ce43086-a6d5-492c-bfb6-c89be160a4a1.gif)
+
+ ![이력서_다운로드_AdobeExpress](https://user-images.githubusercontent.com/97432901/174238164-2674eba8-33e7-4032-8740-6469a880dcc5.gif)
+
+ ![이력서_업로드_AdobeExpress](https://user-images.githubusercontent.com/97432901/174238356-69687df2-88d7-4aba-b589-1fc2135b5d1a.gif)
+
+ 
+- 이력서페이지
+  - 사용자 컴퓨터로 접근하여 파일데이터 업로드 구현
+  - 업로드된 파일 다운로드, 삭제기능 구현
+  - 백앤드로 사용자가 어떤 파일을 업로드 하였는지 데이터 전달 구현
+  - 파일 삭제 버튼을 눌렀을 때 method: DELETE 전달
+ 
 
 ### 염종은 : 채용상세페이지, 좋아요페이지
