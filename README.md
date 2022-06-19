@@ -47,23 +47,25 @@
   - 검색 결과 페이지에서 좋아요 버튼 클릭 시 해당 내용 서버로 전달 (데이터 좋아요 페이지 연동)
   - 각 아이템 클릭 시 채용상세페이지로 이동 
 
-### 안성주 : Nav/Footer, 마이페이지, 이력서페이지
-
-
+## 안성주 : Nav/Footer, 마이페이지, 이력서페이지   
+   
+### 1. 로그인시 Nav 메뉴 변경
 ![Nav_텍스트_변경_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237175-e84cd00e-5024-4108-814a-38141cd8a989.gif)
+
+### 2. Nav dropmenu 구현
 ![Nav_dropmenu_구현_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237425-641d81c2-4847-4477-a107-122ea02dec51.gif)
-
-
-
-
+   
+    
+     
 - Nav/Footer 
   - Navbar 메뉴별로 클릭 시 해당 페이지로 이동
   - 햄버거bar 모달창 및 2중 모달창 구현
   - 비로그인 및 로그인시 각각 토근값을 기준으로 Navbar 구성 메뉴 변경
+#
 
 
+### 3. My page 구현
 ![Mypage_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237637-6832469b-c6ec-49b8-a971-94e3353e6db3.gif)
-
 
 
 
@@ -71,13 +73,20 @@
   - 백앤드로부터 로그인된 사용자 정보 및 사용자 지원 현황 정보를 받아 페이지로 표출
   - 고정적으로 사용되는 데이터와 지속적으로 변경되는 데이터를 구분하여 페이지 구현
   - 지원 현황 정보 수치를 계산하여 지원 요약 정보로 표현 
+ #
+
+
+### 4. 지원하기 -> 이력서 연걸
  
  ![이력서1_AdobeExpress](https://user-images.githubusercontent.com/97432901/174237800-95889354-b8e0-4a68-b2ec-8a90137643fb.gif)
 
+### 5. 이력서 삭제
  ![이력서_삭제_AdobeExpress](https://user-images.githubusercontent.com/97432901/174238009-4ce43086-a6d5-492c-bfb6-c89be160a4a1.gif)
 
+### 6. 이력서 다운로드
  ![이력서_다운로드_AdobeExpress](https://user-images.githubusercontent.com/97432901/174238164-2674eba8-33e7-4032-8740-6469a880dcc5.gif)
 
+### 7. 이력서 업로드
  ![이력서_업로드_AdobeExpress](https://user-images.githubusercontent.com/97432901/174238356-69687df2-88d7-4aba-b589-1fc2135b5d1a.gif)
 
  
@@ -86,6 +95,6 @@
   - 업로드된 파일 다운로드, 삭제기능 구현
   - 백앤드로 사용자가 어떤 파일을 업로드 하였는지 데이터 전달 구현
   - 파일 삭제 버튼을 눌렀을 때 method: DELETE 전달
- 
+ #
 
 ### 염종은 : 채용상세페이지, 좋아요페이지
